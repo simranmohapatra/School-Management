@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body{
+            background-image: url('https://www.shutterstock.com/image-photo/dark-empty-classroom-beautiful-scenery-260nw-604365815.jpg');
+            /* background-size:auto; */
+            background-repeat: no-repeat;
+            background-size: 100% 333%;
+            color: rgb(225, 185, 10);
+        }
+        
+        
+        form{
+            width: 200px;
+            padding: 20px;
+            margin: auto;
+            background-color:rgba(9, 4, 4, 0.8);
+            /* background-color: transparent; */
+            border: 5px double white ;
+            border-radius: 10% ;
+            
+            
+        }
+        form:hover{
+            border-color: crimson;
+        }
+        ::placeholder{
+            padding: 8%;
+            
+        }
+        input{
+            border-radius: 10px;
+        }
+        input:hover{
+            background-color: rgb(198, 236, 223);
+        }
+        button{
+            background-color:rgb(11, 1, 1,0.9);
+            color: rgb(207, 33, 33);
+            padding: 1%;
+            border-radius: 30%;
+        }
+        button:hover{
+            border-color: crimson;
+        }
+        table{
+            width: 100%;
+            /* width: 200px; */
+            padding: 20px;
+            margin: auto;
+            background-color: rgb(103 34 34 / 50%);
+            /* background-color: transparent; */
+        }
+        thead{
+            border: 2px solid white;
+            color:aqua;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        th,td{
+            border: 2px solid white;
+            color:aqua;
+            background-color: transparent;
+        }
+        summary{
+            color: red;
+        }
+        h1{
+            color: red;
+        }
+        a{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <h1><center><em>WELCOME TO OUR WEBSITE</em></center></h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum voluptas, totam quod rerum accusamus illum maxime mollitia labore a voluptates dicta laboriosam ut doloribus quia ducimus aspernatur odit dolore tempora?
+    Pariatur maiores iure iusto soluta molestias minus debitis dolor rem minima. Minus, iure nisi placeat repellendus sint provident, minima sit voluptatibus deleniti, impedit cupiditate natus asperiores. Veritatis laboriosam dolor voluptate!
+    Magnam veritatis optio culpa rerum nobis, quasi id inventore, eligendi corrupti magni fuga atque dignissimos ea, provident saepe omnis voluptatem tenetur obcaecati molestiae ipsa architecto consequatur laudantium odio maiores? Esse!</p>
+    <details>
+        <summary>Click to see more information about us: </summary>
+        <br><br>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div><h1><em>Enter your details!!!</em></h1></div>
+
+            <label for="name"> </label>
+            <input type="text" id="name" name="name" placeholder="enter your name"required>
+            <br><br>
+            <label for="phno"></label>
+            <input type="number" id="phno" name="phno"placeholder="enter your number" required>
+            <br><br>
+            <label for="pin"></label>
+            <input type="number" id="pin" name="pin" placeholder="enter your pin code" required>
+            <br><br>
+            <label for="address"></label>
+            <input type="text" id="address" name="address" placeholder="enter your address" required>
+            <br><br>
+            <button>submit</button>
+        </form>
+        <br><br><br>
+        
+        <table>
+            <center>
+                <thead>
+                    <tr>
+                        <th>SLNO</th>
+                        <th>NAME</th>
+                        <th>PHNO</th>
+                        <th>PIN</th>
+                        <th>ADDRESS</th>
+                        <th>UPDATE</th>
+                        <th>DELETE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in sim %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{x.name}}</td>
+                        <td>{{x.phno}}</td>
+                        <td>{{x.pin}}</td>
+                        <td>{{x.address}}</td>
+                        <td><a  href="/update/{{x.id}}">UPDATE</a></td>
+                        <td><a href="/delete/{{x.id}}">DELETE</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </center>
+        </table>
+    </details>
+    <br><br><br>
+    <button><a href="/logout">LOGOUT</a></button>
+</body>
+</html>

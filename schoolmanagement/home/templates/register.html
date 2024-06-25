@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTER PAGE</title>
+    <style>
+        body {
+            background-image: url('https://as2.ftcdn.net/v2/jpg/04/60/71/01/1000_F_460710131_YkD6NsivdyYsHupNvO3Y8MPEwxTAhORh.jpg');
+            background-position: fixed;
+            background-repeat: no-repeat;
+            background-size: 100% 120%;
+            color: bisque;
+        }
+
+        form {
+            width: 200px;
+            /* height: 405px; */
+            padding: 20px;
+            margin: auto;
+            background-color: rgba(9, 4, 4, 0.8);
+            /* background-color: transparent; */
+            border: 5px double rgb(255, 255, 255);
+            border-radius: 10%;
+            margin-top: 10%;
+            color: rgba(29, 173, 205, 0.901);
+
+
+        }
+
+        form:hover {
+            border-color: crimson;
+        }
+
+        ::placeholder {
+            padding: 8%;
+
+        }
+
+        input {
+            border-radius: 10px;
+        }
+
+        input:hover {
+            background-color: rgb(198, 236, 223);
+        }
+
+        button {
+            background-color: rgb(11, 1, 1, 0.9);
+            color: rgb(207, 33, 33);
+            padding: 5%;
+            border-radius: 30%;
+        }
+
+        button:hover {
+            border-color: crimson;
+            background-color: rgb(209, 196, 13);
+        }
+
+        a {
+            color: greenyellow;
+        }
+
+        h1 {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div>
+                <h1><em>Register here!!!</em></h1>
+            </div>
+
+            {% if messages %}
+            <div class="alert alert-primary" role="alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+            <br><br>
+            <div>
+                <label for="firstname"></label>
+                <input type="text" name="first_name" id="firstname" placeholder="Enter your firstname..." required>
+                <br><br>
+            </div>
+            <div>
+                <label for="lastname"></label>
+                <input type="text" name="last_name" id="lastname" placeholder="Your last name..." required>
+                <br><br>
+            </div>
+            <div>
+                <label for="userid"></label>
+                <input type="text" name="username" id="userid" placeholder="User ID.." required>
+                <span class="error"></span>
+                <br><br>
+            </div>
+            <div>
+                <label for="Password"></label>
+                <input type="password" name="password" id="password" placeholder="Password.." required>
+                <br><br>
+            </div>
+            <p>if you already have an account then go to login page.... <a href="/login/">Login Here!</a></p>
+            <br>
+            <button>submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
